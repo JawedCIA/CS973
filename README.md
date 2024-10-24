@@ -48,8 +48,7 @@
 ## Response Flipping Explanation
 
 In the context of the XORRO PUF implementation, the indices `x` and `y` are derived from specific bits in the input data, representing the selected XORROs for processing. The response, located in the last element of the row, indicates the output of the PUF for the given challenge.
-### Short explanation
-The use of the formula `model_key = 16 * min(x, y) + max(x, y)` ensures that each combination of XORRO selections is uniquely and consistently identified, facilitating the efficient storage and retrieval of trained models in the implementation.
+
 ### Meaning of `x` and `y`
 - **`x`**: Represents the index of the first selected XORRO.
 - **`y`**: Represents the index of the second selected XORRO.
@@ -66,7 +65,8 @@ The use of the formula `model_key = 16 * min(x, y) + max(x, y)` ensures that eac
 - This effectively changes a response of `0` to `1` and vice versa, ensuring that the model is trained on correctly labeled data.
 
 ## Explanation of `model_key = 16 * min(x, y) + max(x, y)`
-
+### Short explanation
+The use of the formula `model_key = 16 * min(x, y) + max(x, y)` ensures that each combination of XORRO selections is uniquely and consistently identified, facilitating the efficient storage and retrieval of trained models in the implementation.
 The expression `model_key = 16 * min(x, y) + max(x, y)` is used to compute a unique identifier for each combination of selected XORROs in the XORRO PUF implementation. This calculation serves several important purposes:
 
 ### Unique Identification
