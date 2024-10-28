@@ -1,5 +1,25 @@
 # CS973
 ## ASSIGMENT 1
+# Summary for Q3
+## Language and Libraries
+Q3 of Asisgment 1 of CS973 is written in **Python** and utilizes the **scikit-learn** library for machine learning. The specific implementation employs **Logistic Regression** with the configuration:
+```python
+clf = LogisticRegression(max_iter=10000, solver='liblinear', C=10, tol=1e-4, penalty='l2')
+```
+### Hyperparameters
+The hyperparameters used include:
+
+- **max_iter=10000:** Allows the optimization algorithm to run for a maximum of 10,000 iterations, ensuring adequate time for convergence.
+- **solver='liblinear':** Suitable for small datasets and efficient for logistic regression tasks.
+- **C=10:** Provides moderate regularization, balancing model complexity and fitting the training data.
+- **tol=1e-4:** Tolerance level for convergence that helps determine when to stop the optimization process.
+- **penalty='l2':** Indicates the use of L2 regularization to discourage overly complex models.
+
+### Method Summaries
+#### my_fit()
+**The my_fit()** method processes the Challenge-Response Pairs (CRPs) for the Advanced XORRO PUF, extracting relevant selection bits to generate unique model keys. It groups the training data by these keys and trains a Logistic Regression model for each configuration of selected XORROs, ensuring a total of 𝑀 = 120 models are learned based on the number of selection bits.
+#### my_predict() 
+The **my_predict()** method takes the test data and utilizes the trained models from my_fit() to predict responses based on the provided challenges. It generates the corresponding model keys for the test inputs, retrieves the appropriate trained model, and returns the predicted outputs, ensuring accurate classification based on the learned configurations.
 
 # Method Descriptions
 
