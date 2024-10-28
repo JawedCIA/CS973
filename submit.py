@@ -10,6 +10,19 @@ def my_fit(Z_train):
 #  Non Editable Region Ending  #
 ################################
 
+	# Use this method to train your model using training CRPs
+	# The first 64 columns contain the config bits
+	# The next 4 columns contain the select bits for the first mux
+	# The next 4 columns contain the select bits for the second mux
+	# The first 64 + 4 + 4 = 72 columns constitute the challenge
+	# The last column contains the response
+
+    # Determine the number of selection bits (S)
+    S = 4  # As given in the assignment
+    # Calculate M = 2^(S-1) * (2^S - 1)
+    M = 2**(S - 1) * (2 ** S - 1)  # This will give M = 120 for S = 4
+
+
     xor_data_map = {}
     
     # Transforming training data based on selection bits
@@ -40,9 +53,18 @@ def my_fit(Z_train):
             model_key = 16 * i + j
             if model_key in xor_data_map:
              
-                clf = LinearSVC(loss='squared_hinge',penalty='l2',tol=1e-4,c=11,dual='auto')                
+                #clf = LinearSVC(max_iter=10000, loss='squared_hinge',penalty='l2',tol=1e-4,c=11,dual='auto') 
+                # 0.9914572810000208 7.048575445200004 88156.0 0.9487500000000001               
+                #clf=LogisticRegression(max_iter=10000, solver='liblinear', C=11, tol=1e-4,penalty='l2')
+                # 1.3102126592000787 7.1384906877998215 88156.0 0.9484999999999999
+                clf=LogisticRegression(max_iter=10000, solver='liblinear', C=10, tol=1e-4,penalty='l2')
+                #For Best Performance with Speed:
+                #3.20083408240007 6.624912874600023 88156.0 0.949975
+                #clf=LogisticRegression(max_iter=10000, solver='newton-cg', C=40,tol=1e-4,penalty='l2')
                 clf.fit(xor_data_map[model_key][:, :64], xor_data_map[model_key][:, -1])
-                trained_models[model_key] = clf               
+                trained_models[model_key] = clf
+    # Validate the number of trained models against M
+    # print(f"Total models trained: {len(trained_models)} out of {M} expected.")
     return trained_models
 
 ################################
