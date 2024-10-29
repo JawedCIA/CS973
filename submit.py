@@ -53,7 +53,7 @@ def my_fit(Z_train):
             model_key = 16 * i + j
             if model_key in xor_data_map:
              
-                #clf = LinearSVC(max_iter=10000, loss='squared_hinge',penalty='l2',tol=1e-4,c=11,dual='auto') 
+                #clf = LinearSVC(max_iter=10000, loss='squared_hinge',penalty='l2',tol=1e-4,C=11,dual='auto') 
                 # 0.9914572810000208 7.048575445200004 88156.0 0.9487500000000001               
                 #clf=LogisticRegression(max_iter=10000, solver='liblinear', C=11, tol=1e-4,penalty='l2')
                 # 1.3102126592000787 7.1384906877998215 88156.0 0.9484999999999999
