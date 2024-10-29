@@ -1,5 +1,7 @@
 # CS973
 ## ASSIGMENT 1
+## Pssword: SinglePython973#
+
 # Summary for Q3
 ## Language and Libraries
 Q3 of Asisgment 1 of CS973 is written in **Python** and utilizes the **scikit-learn** library for machine learning. The specific implementation employs **Logistic Regression** with the configuration:

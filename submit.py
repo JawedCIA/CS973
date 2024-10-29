@@ -1,11 +1,23 @@
 import numpy as np
 from sklearn.svm import LinearSVC
 from sklearn.linear_model import LogisticRegression
-#from sklearn.model_selection import GridSearchCV
+# You are allowed to import any submodules of sklearn as well e.g. sklearn.svm etc
+# You are not allowed to use other libraries such as scipy, keras, tensorflow etc
+
+# SUBMIT YOUR CODE AS A SINGLE PYTHON (.PY) FILE INSIDE A ZIP ARCHIVE
+# THE NAME OF THE PYTHON FILE MUST BE submit.py
+# DO NOT INCLUDE OTHER PACKAGES LIKE SCIPY, KERAS ETC IN YOUR CODE
+# THE USE OF ANY MACHINE LEARNING LIBRARIES OTHER THAN SKLEARN WILL RESULT IN A STRAIGHT ZERO
+
+# DO NOT CHANGE THE NAME OF THE METHODS my_fit, my_predict etc BELOW
+# THESE WILL BE INVOKED BY THE EVALUATION SCRIPT. CHANGING THESE NAMES WILL CAUSE EVALUATION FAILURE
+
+# You may define any new functions, variables, classes here
+# For example, functions to calculate next coordinate or step length
 ################################
 # Non Editable Region Starting #
 ################################
-def my_fit(Z_train):
+def my_fit( Z_train ):
 ################################
 #  Non Editable Region Ending  #
 ################################
@@ -65,16 +77,16 @@ def my_fit(Z_train):
                 trained_models[model_key] = clf
     # Validate the number of trained models against M
     # print(f"Total models trained: {len(trained_models)} out of {M} expected.")
-    return trained_models
+    return trained_models                   # Return the trained model   
 
 ################################
 # Non Editable Region Starting #
 ################################
-def my_predict(X_tst, models):
+def my_predict( X_tst, model ):
 ################################
 #  Non Editable Region Ending  #
 ################################
-
+    # Use this method to make predictions on test challenges
     X_pred = np.zeros(X_tst.shape[0])
     
     for i in range(X_tst.shape[0]):
@@ -83,12 +95,12 @@ def my_predict(X_tst, models):
         model_key = 16 * min(x, y) + max(x, y)  # Ensure x <= y for consistent keys
 
         # Check if model_key exists before prediction
-        if model_key not in models:
+        if model_key not in model:
             #print(f"Warning: Model for key {model_key} not found. Available keys: {list(models.keys())}")
             continue  # Skip this iteration if the model is missing
 
         feature_array = X_tst[i, :64].reshape(1, 64)  # Reshape for prediction
-        pred = models[model_key].predict(feature_array)
+        pred = model[model_key].predict(feature_array)
 
         # Flip the prediction if needed
         if x > y:
