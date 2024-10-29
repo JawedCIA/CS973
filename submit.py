@@ -97,4 +97,4 @@ def my_predict(X_tst, models):
         X_pred[i] = pred
     
     return X_pred
-#0.9613512399999309 2.244928359999176 83997.8 0.94276
+
