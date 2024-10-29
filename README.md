@@ -22,9 +22,13 @@ The hyperparameters used include:
 The **my_predict()** method takes the test data and utilizes the trained models from my_fit() to predict responses based on the provided challenges. It generates the corresponding model keys for the test inputs, retrieves the appropriate trained model, and returns the predicted outputs, ensuring accurate classification based on the learned configurations.
 
 # Q4: Reporting the Outcome of Various Hyperparameters
-In this section, we report the outcomes of the effect of various hyperparameters by comparing the performance of LinearSVC and Logistic Regression. Below, we include a data table of hyperparameters along with corresponding charts for clear visualization.
+In this section, we report the outcomes of the effect of various hyperparameters by comparing the performance of LinearSVC and Logistic Regression. 
+Below, we include a data table of hyperparameters along with corresponding charts for clear visualization.
+
 During the experiments with various hyperparameters, we varied the hyperparameter value and solver. But the best results were observed when other hyper parameters were kept to default values, changing only the specific hyperparameter value (not explicitly mentioned in this report).
+
 We also experimented with RidgeClassifier using various hyperparameters to compare its performance with LinearSVC and Logistic Regression. However, we chose not to include those results in the report, as it would be too cumbersome for the data table and chart. Also, we observed the training time was longer and the model had less accuracy for this method. So for clarity, we focused solely on the results from LinearSVC and Logistic Regression.
+
 
 Notably, for Logistic Regression with the hyperparameter penalty='l1', we specified solver='liblinear' as the default since the default solver solver='lbfgs' does not support the l1 penalty.
 
