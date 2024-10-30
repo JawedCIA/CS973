@@ -1,6 +1,6 @@
 # CS973
 ## ASSIGMENT 1
-## Pssword: SinglePython973#
+## Pssword: SinglePython973
 
 # Summary for Q3
 ## Language and Libraries
