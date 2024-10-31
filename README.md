@@ -1,10 +1,10 @@
 # CS973
 ## ASSIGMENT 1
-## Pssword: SinglePython973
+## Password: SinglePython973
 
 # Summary for Q3
 ## Language and Libraries
-Q3 of Asisgment 1 of CS973 is written in **Python** and utilizes the **scikit-learn** library for machine learning. The specific implementation employs **Logistic Regression** with the configuration:
+Q3 of Asisgment 1 of CS973 is written in **Python(submit.py)** and utilizes the **scikit-learn** library for machine learning and validated using provided Google Colab script. The specific implementation employs **Logistic Regression** with the configuration:
 ```python
 clf = LogisticRegression(max_iter=10000, solver='liblinear', C=10, tol=1e-4, penalty='l2')
 ```
@@ -20,23 +20,7 @@ The hyperparameters used include:
 ### Method Summaries
 #### my_fit()
 **The my_fit()** method processes the Challenge-Response Pairs (CRPs) for the Advanced XORRO PUF, extracting relevant selection bits to generate unique model keys. It groups the training data by these keys and trains a Logistic Regression model for each configuration of selected XORROs, ensuring a total of 𝑀 = 120 models are learned based on the number of selection bits.
-#### my_predict() 
-The **my_predict()** method takes the test data and utilizes the trained models from my_fit() to predict responses based on the provided challenges. It generates the corresponding model keys for the test inputs, retrieves the appropriate trained model, and returns the predicted outputs, ensuring accurate classification based on the learned configurations.
-
-# Q4: Reporting the Outcome of Various Hyperparameters
-In this section, we report the outcomes of the effect of various hyperparameters by comparing the performance of LinearSVC and Logistic Regression. 
-Below, we include a data table of hyperparameters along with corresponding charts for clear visualization.
-
-During the experiments with various hyperparameters, we varied the hyperparameter value and solver. But the best results were observed when other hyper parameters were kept to default values, changing only the specific hyperparameter value (not explicitly mentioned in this report).
-
-We also experimented with RidgeClassifier using various hyperparameters to compare its performance with LinearSVC and Logistic Regression. However, we chose not to include those results in the report, as it would be too cumbersome for the data table and chart. Also, we observed the training time was longer and the model had less accuracy for this method. So for clarity, we focused solely on the results from LinearSVC and Logistic Regression.
-
-
-Notably, for Logistic Regression with the hyperparameter penalty='l1', we specified solver='liblinear' as the default since the default solver solver='lbfgs' does not support the l1 penalty.
-
-# Method Descriptions
-
-## my_fit Method Flowchart Description
+##### my_fit Method Flowchart Description
 
 1. Start
 2. Initialize `xor_data_map` as an empty dictionary.
@@ -60,7 +44,10 @@ Notably, for Logistic Regression with the hyperparameter penalty='l1', we specif
 7. Return `trained_models`.
 8. End
 
-## my_predict Method Flowchart Description
+#### my_predict() 
+The **my_predict()** method takes the test data and utilizes the trained models from my_fit() to predict responses based on the provided challenges. It generates the corresponding model keys for the test inputs, retrieves the appropriate trained model, and returns the predicted outputs, ensuring accurate classification based on the learned configurations.
+
+##### my_predict Method Flowchart Description
 
 1. Start
 2. Initialize `X_pred` as a zero array of length equal to the number of rows in `X_tst`.
@@ -75,8 +62,61 @@ Notably, for Logistic Regression with the hyperparameter penalty='l1', we specif
    - Store the prediction in `X_pred`.
 4. Return `X_pred`.
 5. End
+### Results
+
+The following are the results we obtained after using the optimized Logistic Regression classifier model with the best-chosen hyperparameters on the provided Google Colab script.
+
+![image](https://github.com/user-attachments/assets/7039f7e8-c99c-4dfc-b769-603c09b10c66)
+
+# Q4: Reporting the Outcome of Various Hyperparameters
+In this section, we report the outcomes of the effect of various hyperparameters by comparing the performance of LinearSVC and Logistic Regression. Below, we include a data table of hyperparameters along with corresponding charts for clear visualization.
+
+During the experiments with various hyperparameters, we chose to vary only the specific hyperparameter value under test while keeping all other hyperparameters at their default values (not explicitly mentioned in this report).
+
+We also experimented with RidgeClassifier using various hyperparameters to compare its performance with LinearSVC and Logistic Regression. However, we chose not to include those results in the report, as it would be too cumbersome for the data table and chart. Also, we observed the training time was longer and the model had less accuracy for this method. 
+
+So, for clarity, we focused solely on the results from LinearSVC and Logistic Regression.
+
+Notably, for Logistic Regression with the hyperparameter penalty=’l1’, we specified solver=’liblinear’
+as the default since the default solver solver=’lbfgs’ does not support the l1 penalty.
+
+a) Changing the loss hyperparameter in LinearSVC (hinge vs squared hinge)
+
+![image](https://github.com/user-attachments/assets/bbcf7199-3822-4331-af57-225a8c7e15ad)
+
+![image](https://github.com/user-attachments/assets/67367292-d507-4fb7-894b-cb5abf9c9f14)
 
 
+b) setting C hyperparameter in LinearSVC and LogisticRegression to high/low/medium
+values
+
+
+
+![image](https://github.com/user-attachments/assets/77a5e9da-fd16-4fac-b59a-cd30cfe53378)
+
+![image](https://github.com/user-attachments/assets/9054f9b5-7ceb-461b-9f62-eac39baa7eca)
+
+c) changing the tol hyperparameter in LinearSVC and LogisticRegression to high/low/medium
+values
+
+![image](https://github.com/user-attachments/assets/e525bad1-d6f5-4a24-9cf3-e935188049a7)
+
+![image](https://github.com/user-attachments/assets/5025989a-957b-421a-97a3-1ffa4f35114d)
+
+
+d) changing the penalty (regularization) hyperparameter in LinearSVC and LogisticRegression
+(l2 vs l1)
+
+
+
+![image](https://github.com/user-attachments/assets/aa1d31e2-9e37-4132-a0a3-58ad822be738)
+
+![image](https://github.com/user-attachments/assets/123dea75-f713-4f9f-84fb-322fa6adc0a6)
+
+
+
+
+# Appendix
 
 ## Response Flipping Explanation
 
